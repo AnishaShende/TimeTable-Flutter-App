@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-import 'component/lecture_box.dart';
+import 'package:timetable_app/home_screen.dart';
 
 void main() {
   runApp(
@@ -17,9 +15,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData.dark().copyWith(
-      //   scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
-      // ),
       home: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -31,140 +26,10 @@ class MyApp extends StatelessWidget {
           ),
           child: const Scaffold(
             backgroundColor: Colors.transparent,
-            body: Iphone13ProLight(),
-
-            // Iphone13ProLight(),
+            body: HomeScreen(),
           ),
         ),
       ),
-    );
-  }
-}
-
-class Iphone13ProLight extends StatelessWidget {
-  const Iphone13ProLight({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
-    return Column(
-      children: [
-        // Container(
-        //   width: width,
-        //   height: height,
-        //   clipBehavior: Clip.antiAlias,
-        //   decoration: const BoxDecoration(
-        //     gradient: LinearGradient(
-        //       begin: Alignment(0.00, -1.00),
-        //       end: Alignment(0, 1),
-        //       colors: [Color(0xFF57D6FF), Colors.white],
-        //     ),
-        //   ),
-        //   child: Stack(
-        //     children: [
-        SizedBox(
-          height: height * 0.07,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: width * 0.1,
-              height: height * 0.2,
-              padding: const EdgeInsets.symmetric(vertical: 8.33),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.arrow_back_ios_outlined),
-                ],
-              ),
-            ),
-            const Column(
-              children: [
-                SizedBox(
-                  // left: 86,
-                  // top: 122,
-                  // height: height * 0.25,
-                  // width: width * 0.5,
-                  child: Text(
-                    '9:17 AM',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 64,
-                      fontFamily: 'Sofia Sans',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                Text(
-                  'SUN, SEPT 17',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 48,
-                    fontFamily: 'Sofia Sans',
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              width: width * 0.1,
-              height: height * 0.2,
-              padding: const EdgeInsets.symmetric(vertical: 8.33),
-              child: const Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.arrow_forward_ios_outlined),
-                ],
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: height * 0.05,
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            LectureBox(
-                height: height * 0.2,
-                width: width * 0.6,
-                lectureStatus: "PREVIOUS LECTURE",
-                startTime: '8:00 AM',
-                endTime: '9:00 AM',
-                subject: 'CDT',
-                teacherInitials: 'DSW',
-                classroomNumber: 'B301'),
-            SizedBox(height: height * 0.01),
-            LectureBox(
-                height: height * 0.2,
-                width: width * 0.8,
-                lectureStatus: "CURRENT LECTURE",
-                startTime: '9:00 AM',
-                endTime: '10:00 AM',
-                subject: 'FDS',
-                teacherInitials: 'VBM',
-                classroomNumber: 'B301'), // 0.2, 0.7
-            SizedBox(height: height * 0.01),
-            LectureBox(
-                height: height * 0.2,
-                width: width * 0.6,
-                lectureStatus: "NEXT LECTURE",
-                startTime: '10:00 AM',
-                endTime: '11:00 AM',
-                subject: 'CAO',
-                teacherInitials: 'VSG',
-                classroomNumber: 'B107'),
-          ],
-        ),
-      ],
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LectureBox extends StatelessWidget {
-  const LectureBox(
+  LectureBox(
       {super.key,
       required this.height,
       required this.width,
@@ -10,7 +10,8 @@ class LectureBox extends StatelessWidget {
       required this.endTime,
       required this.subject,
       required this.teacherInitials,
-      required this.classroomNumber});
+      required this.classroomNumber,
+      required this.isCenter});
 
   final double height;
   final double width;
@@ -20,6 +21,7 @@ class LectureBox extends StatelessWidget {
   final String subject;
   final String teacherInitials;
   final String classroomNumber;
+  bool isCenter;
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +31,13 @@ class LectureBox extends StatelessWidget {
             ? Colors.red
             : Colors.green;
     var fontSize = lectureStatus == "PREVIOUS LECTURE"
-        ? 15.0
+        ? 13.0
         : lectureStatus == "CURRENT LECTURE"
-            ? 20.0
-            : 15.0;
+            ? 15.0
+            : 13.0;
     return Container(
-      height: height,
-      width: width,
+      height: height / 2,
+      width: isCenter ? width / 1.2 : width,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -65,7 +67,9 @@ class LectureBox extends StatelessWidget {
               lectureStatus,
               style: TextStyle(
                 color: color, // Color(0xFFFF5A5A),
-                fontSize: fontSize,
+                fontSize: lectureStatus == "CURRENT LECTURE" || isCenter
+                    ? fontSize - 2
+                    : fontSize,
                 fontFamily: 'Sofia Sans',
                 fontWeight: FontWeight.w600,
               ),
@@ -130,7 +134,7 @@ class LectureBox extends StatelessWidget {
                   classroomNumber,
                   style: TextStyle(
                     color: Color(0xFF001E8B),
-                    fontSize: fontSize + 10,
+                    fontSize: fontSize + 7,
                     letterSpacing: 1.5,
                     fontFamily: 'Sofia Sans',
                     fontWeight: FontWeight.w700,
